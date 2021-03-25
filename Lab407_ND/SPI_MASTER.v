@@ -22,7 +22,7 @@
 `define N 100
 
 module SPI_MASTER(	input clk,				output wire MOSI,
-							input st,				output reg SCLK = 1,
+							input st,				output reg SCLK = 0,
 							input [`m-1:0] DI,	//output wire CS,
 							input MISO,				output reg [7:0] cb_bit = 0,
 							input clr,				output reg [15:0] cb_tact = 0,
@@ -48,11 +48,21 @@ module SPI_MASTER(	input clk,				output wire MOSI,
 		cb_bit <= (start | LOAD) ? 0 : (ce_tact ? cb_bit + 1 : cb_bit);
 		
 		LOAD <= st ? 0 : (end_TX ? 1 : LOAD);
-		SCLK <= LOAD ? 1 : (ce ? !SCLK : SCLK);
+		SCLK <= LOAD ? 0 : (ce ? !SCLK : SCLK);
 		
+		//sr_MTX <= (LOAD & start) ? DI : sr_MTX;
 		sr_MTX <= (LOAD & start) ? DI : (t_SCLK & !SCLK) ? (sr_MTX << 1) : sr_MTX;
 		sr_MRX <= (!t_SCLK & SCLK) ? (sr_MRX << 1) | MISO : sr_MRX ;
 	end	
+	
+	/*
+	always @ (negedge SCLK) begin 
+		sr_MTX <= (sr_MTX << 1) | sr_MTX[0] ;
+	end
+	
+	always @ (posedge SCLK) begin
+		sr_MRX <= (sr_MRX << 1) | MISO;
+	end*/
 	
 	always @ (posedge LOAD or posedge clr) begin
 		MRX_DAT <= clr ? 0 : sr_MRX;

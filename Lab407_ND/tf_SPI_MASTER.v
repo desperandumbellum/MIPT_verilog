@@ -64,6 +64,7 @@ module tf_SPI_MASTER;
 		.start(start)
 	);
 
+	parameter my_data = 11'b01100100100;
 	parameter Tclk=20;
 	always begin clk=0; #(Tclk/2); clk=1; #(Tclk/2); end
 	
@@ -71,11 +72,11 @@ module tf_SPI_MASTER;
 		// Initialize Inputs
 		//clk = 0;
 		st = 0;
-		DI = 11'b01100100100;
+		DI = my_data;
 		MISO = 0;
 
 		// Wait 100 ns for global reset to finish
-		#20080;
+		#20070;
 		
 		st = 1;
 		#20;

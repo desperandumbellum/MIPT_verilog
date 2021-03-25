@@ -10,14 +10,12 @@
         <signal name="JB2" />
         <signal name="JB1" />
         <signal name="JC3" />
-        <signal name="MRX_DAT(10:0)">
-        </signal>
+        <signal name="MRX_DAT(10:0)" />
         <signal name="MTX_DAT(10:0)" />
         <signal name="JC2" />
         <signal name="clk" />
         <signal name="JB4" />
-        <signal name="SRX_DAT(10:0)">
-        </signal>
+        <signal name="SRX_DAT(10:0)" />
         <signal name="STX_DAT(10:0)" />
         <signal name="BTN0" />
         <signal name="SW(1:0)" />
@@ -48,7 +46,7 @@
         <port polarity="Input" name="F50MHz" />
         <port polarity="Input" name="SW(2:0)" />
         <blockdef name="SPI_MASTER">
-            <timestamp>2021-3-23T5:56:32</timestamp>
+            <timestamp>2021-3-23T13:18:58</timestamp>
             <line x2="0" y1="32" y2="32" x1="64" />
             <line x2="0" y1="-736" y2="-736" x1="64" />
             <line x2="0" y1="-512" y2="-512" x1="64" />
@@ -75,7 +73,7 @@
             <rect width="256" x="64" y="-768" height="832" />
         </blockdef>
         <blockdef name="SPI_SLAVE">
-            <timestamp>2021-3-23T5:56:46</timestamp>
+            <timestamp>2021-3-23T13:19:4</timestamp>
             <line x2="0" y1="32" y2="32" x1="64" />
             <line x2="0" y1="-224" y2="-224" x1="64" />
             <line x2="0" y1="-160" y2="-160" x1="64" />
@@ -185,6 +183,7 @@
             <blockpin signalname="clk" name="clk" />
             <blockpin signalname="JC2" name="st" />
             <blockpin signalname="JB4" name="MISO" />
+            <blockpin signalname="BTN0" name="clr" />
             <blockpin signalname="MTX_DAT(10:0)" name="DI(10:0)" />
             <blockpin signalname="JB3" name="MOSI" />
             <blockpin signalname="JB2" name="SCLK" />
@@ -198,18 +197,17 @@
             <blockpin name="sr_MRX(10:0)" />
             <blockpin name="sr_MTX(10:0)" />
             <blockpin signalname="MRX_DAT(10:0)" name="MRX_DAT(10:0)" />
-            <blockpin signalname="BTN0" name="clr" />
         </block>
         <block symbolname="SPI_SLAVE" name="XLXI_2">
             <blockpin signalname="JB2" name="SCLK" />
             <blockpin signalname="JB3" name="MOSI" />
             <blockpin signalname="LOAD" name="LOAD" />
+            <blockpin signalname="BTN0" name="clr" />
             <blockpin signalname="STX_DAT(10:0)" name="DI(10:0)" />
             <blockpin signalname="JB4" name="MISO" />
             <blockpin name="sr_SRX(10:0)" />
             <blockpin name="sr_STX(10:0)" />
             <blockpin signalname="SRX_DAT(10:0)" name="SRX_DAT(10:0)" />
-            <blockpin signalname="BTN0" name="clr" />
         </block>
         <block symbolname="MUX64_16" name="XLXI_3">
             <blockpin signalname="MTX_DAT(10:0)" name="MTX_DAT(10:0)" />
