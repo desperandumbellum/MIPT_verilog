@@ -12,8 +12,6 @@
         <signal name="SW(7:0)" />
         <signal name="ce1ms" />
         <signal name="JD3" />
-        <signal name="URXD" />
-        <signal name="JB10" />
         <signal name="BTN3" />
         <signal name="JB2" />
         <signal name="F50MHz" />
@@ -22,7 +20,6 @@
         <signal name="JB3" />
         <signal name="JB4" />
         <signal name="JB7" />
-        <signal name="JD4" />
         <signal name="XLXN_83" />
         <signal name="LED0" />
         <signal name="JC2" />
@@ -38,11 +35,10 @@
         <signal name="seg_P" />
         <signal name="AN(3:0)" />
         <signal name="seg(6:0)" />
+        <signal name="URXD" />
         <port polarity="Output" name="LED7" />
         <port polarity="Input" name="SW(7:0)" />
         <port polarity="Output" name="JD3" />
-        <port polarity="Input" name="URXD" />
-        <port polarity="Output" name="JB10" />
         <port polarity="Input" name="BTN3" />
         <port polarity="Output" name="JB2" />
         <port polarity="Input" name="F50MHz" />
@@ -51,7 +47,6 @@
         <port polarity="Output" name="JB3" />
         <port polarity="Output" name="JB4" />
         <port polarity="Output" name="JB7" />
-        <port polarity="Input" name="JD4" />
         <port polarity="Output" name="LED0" />
         <port polarity="Output" name="JC2" />
         <port polarity="Output" name="JC4" />
@@ -63,6 +58,7 @@
         <port polarity="Output" name="seg_P" />
         <port polarity="Output" name="AN(3:0)" />
         <port polarity="Output" name="seg(6:0)" />
+        <port polarity="Input" name="URXD" />
         <blockdef name="UTXD1B">
             <timestamp>2021-3-3T12:33:57</timestamp>
             <rect width="256" x="64" y="-640" height="640" />
@@ -134,16 +130,6 @@
             <rect width="64" x="320" y="-44" height="24" />
             <line x2="384" y1="-32" y2="-32" x1="320" />
         </blockdef>
-        <blockdef name="and2">
-            <timestamp>2000-1-1T10:10:10</timestamp>
-            <line x2="64" y1="-64" y2="-64" x1="0" />
-            <line x2="64" y1="-128" y2="-128" x1="0" />
-            <line x2="192" y1="-96" y2="-96" x1="256" />
-            <arc ex="144" ey="-144" sx="144" sy="-48" r="48" cx="144" cy="-96" />
-            <line x2="64" y1="-48" y2="-48" x1="144" />
-            <line x2="144" y1="-144" y2="-144" x1="64" />
-            <line x2="64" y1="-48" y2="-144" x1="64" />
-        </blockdef>
         <blockdef name="m2_1">
             <timestamp>2000-1-1T10:10:10</timestamp>
             <line x2="96" y1="-64" y2="-192" x1="96" />
@@ -188,15 +174,10 @@
             <blockpin name="sr_dat(7:0)" />
         </block>
         <block symbolname="m2_1" name="XLXI_9">
-            <blockpin signalname="JB10" name="D0" />
+            <blockpin signalname="URXD" name="D0" />
             <blockpin signalname="bf_TXD" name="D1" />
             <blockpin signalname="BTN3" name="S0" />
             <blockpin signalname="XLXN_83" name="O" />
-        </block>
-        <block symbolname="and2" name="XLXI_8">
-            <blockpin signalname="URXD" name="I0" />
-            <blockpin signalname="JD4" name="I1" />
-            <blockpin signalname="JB10" name="O" />
         </block>
         <block symbolname="bufg" name="XLXI_3">
             <blockpin signalname="F50MHz" name="I" />
@@ -251,27 +232,7 @@
         </block>
     </netlist>
     <sheet sheetnum="1" width="3520" height="2720">
-        <instance x="384" y="1168" name="XLXI_8" orien="R0" />
-        <branch name="JD4">
-            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="368" y="1040" type="branch" />
-            <wire x2="368" y1="1040" y2="1040" x1="304" />
-            <wire x2="384" y1="1040" y2="1040" x1="368" />
-        </branch>
-        <branch name="URXD">
-            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="336" y="1104" type="branch" />
-            <wire x2="336" y1="1104" y2="1104" x1="272" />
-            <wire x2="384" y1="1104" y2="1104" x1="336" />
-        </branch>
         <instance x="672" y="1296" name="XLXI_9" orien="R0" />
-        <branch name="JB10">
-            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="704" y="992" type="branch" />
-            <wire x2="656" y1="1072" y2="1072" x1="640" />
-            <wire x2="656" y1="1072" y2="1136" x1="656" />
-            <wire x2="672" y1="1136" y2="1136" x1="656" />
-            <wire x2="656" y1="992" y2="1072" x1="656" />
-            <wire x2="704" y1="992" y2="992" x1="656" />
-            <wire x2="784" y1="992" y2="992" x1="704" />
-        </branch>
         <branch name="bf_TXD">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="560" y="1200" type="branch" />
             <wire x2="672" y1="1200" y2="1200" x1="560" />
@@ -340,8 +301,7 @@
         <iomarker fontsize="28" x="1792" y="400" name="JB2" orien="R0" />
         <branch name="SW(7:0)">
             <wire x2="656" y1="848" y2="848" x1="384" />
-            <wire x2="1312" y1="848" y2="848" x1="656" />
-            <wire x2="1440" y1="848" y2="848" x1="1312" />
+            <wire x2="1440" y1="848" y2="848" x1="656" />
             <wire x2="656" y1="800" y2="848" x1="656" />
             <wire x2="752" y1="800" y2="800" x1="656" />
         </branch>
@@ -374,7 +334,6 @@
             <wire x2="1696" y1="144" y2="144" x1="1584" />
             <wire x2="1584" y1="144" y2="176" x1="1584" />
         </branch>
-        <iomarker fontsize="28" x="304" y="1040" name="JD4" orien="R180" />
         <instance x="752" y="2144" name="XLXI_20" orien="R0">
         </instance>
         <branch name="XLXN_83">
@@ -489,6 +448,16 @@
         <iomarker fontsize="28" x="1984" y="944" name="seg(6:0)" orien="R0" />
         <iomarker fontsize="28" x="1984" y="752" name="seg_P" orien="R0" />
         <iomarker fontsize="28" x="272" y="1104" name="URXD" orien="R180" />
-        <iomarker fontsize="28" x="784" y="992" name="JB10" orien="R0" />
+        <branch name="URXD">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="336" y="1104" type="branch" />
+            <wire x2="336" y1="1104" y2="1104" x1="272" />
+            <wire x2="576" y1="1104" y2="1104" x1="336" />
+            <wire x2="576" y1="1072" y2="1104" x1="576" />
+            <wire x2="672" y1="1072" y2="1072" x1="576" />
+            <wire x2="672" y1="1056" y2="1056" x1="592" />
+            <wire x2="672" y1="1056" y2="1072" x1="672" />
+            <wire x2="592" y1="1056" y2="1136" x1="592" />
+            <wire x2="672" y1="1136" y2="1136" x1="592" />
+        </branch>
     </sheet>
 </drawing>
